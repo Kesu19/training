@@ -14,7 +14,7 @@ export class FirstCrudService {
   }
   
   deletUser(param: any): Observable<any>{
-    const endpoint = 'http://localhost:4000/crud/deletUser';
+    const endpoint = `http://localhost:4000/crud/deletUser/?id={{param}}`;
     console.log(param)
     return this.http.get<any>(endpoint,param)
 
