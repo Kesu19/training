@@ -1,6 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams  } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
+const optionRequete = {
+  headers: new HttpHeaders({ 
+    'Access-Control-Allow-Origin':'*',
+    'mon-entete-personnalise':'maValeur'
+  })
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,10 +21,17 @@ export class FirstCrudService {
     return this.http.get<any[]>(endpoint);
   }
   
-  deletUser(param: any): Observable<any>{
-    const endpoint = `http://localhost:4000/crud/deletUser/?id={param}`;
-    console.log(param)
-    return this.http.get<any>(endpoint,param)
+  deletUser(id: any): Observable<any>{
+    let params = new HttpParams().set('id', id);
+    const endpoint = `http://localhost:4000/crud/deletUser`;
+    console.log(params)
+    return this.http.get<any>(endpoint,{ params: params })
 
+  }
+  updateUser(id:any):Observable<any>{
+    let params = new HttpParams().set('id',id)
+    const endpoint = `http://localhost:4000/crud/deletUser`;
+    console.log(params)
+    return this.http.get<any>(endpoint,{params:params})
   }
 }
