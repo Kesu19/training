@@ -6,15 +6,18 @@
         {{allUser.prenom}}
         {{allUser.login}}
         {{allUser.mdp}} 
-        <button (click)='deletUser(allUser.id)'>delet</button>       
+        <button (click)='deletUser(allUser.id)'>delet</button>
+               
     </li>
 </ul>
 
-<form>
-	
-	<select name="education">
-		<option *ngFor="let allUser of user"> {{allUser.id}}</option>
-	</select><br />
-    <input type="text"></br>
-	<input type="submit" value="Valider" />
+<form (ngSubmit)="updateUser(idUserUpdate,newPassword)">
+	<div>
+	<select [(ngModel)]="idUserUpdate" [ngModelOptions]="{standalone: true}">
+        <option>Choisire un id</option>
+		<option *ngFor="let allUser of user" > {{allUser.id}}</option>
+	</select><br/>
+    <input type="text" [(ngModel)]="newPassword" [ngModelOptions]="{standalone: true}">
+    <button type="submit">update</button>
+    </div>
 </form>
