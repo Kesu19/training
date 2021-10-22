@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirstCrudService } from '../../services/firstCrudService/first-crud.service';
-
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-first-page',
@@ -18,13 +18,17 @@ export class FirstPageComponent implements OnInit {
       console.log(data)
       this.user = data
     })
-    this.firstCrudService.deletUser(4).subscribe(data=>{
-      console.log(data)
-    })
   }
 
-  selectAllUser(){
-
+  deletUser(i:any){
+    this.firstCrudService.deletUser(i).subscribe(data=>{
+      console.log(i)
+    })
+  }
+  updateUser(id:any){
+    this.firstCrudService.updateUser(id).subscribe(data=>{
+      console.log(id)
+    })
   }
 
 
