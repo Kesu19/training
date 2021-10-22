@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirstCrudService } from '../../services/firstCrudService/first-crud.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-first-page',
@@ -11,6 +12,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 export class FirstPageComponent implements OnInit {
   user:any[]=[]
+  idUserUpdate:any
+  newPassword:any
   constructor(private firstCrudService: FirstCrudService) { }
 
   ngOnInit(): void {
@@ -25,8 +28,12 @@ export class FirstPageComponent implements OnInit {
       console.log(i)
     })
   }
-  updateUser(id:any){
-    this.firstCrudService.updateUser(id).subscribe(data=>{
+
+
+  updateUser(id:any,newPassword:any){
+    console.log(id)
+    console.log(newPassword)
+    this.firstCrudService.updateUser(id,newPassword).subscribe(data=>{
       console.log(id)
     })
   }
