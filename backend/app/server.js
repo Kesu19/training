@@ -3,9 +3,9 @@ const express = require("express")
 const index = express()
 const routes = require('./controllers/routes.js')
 // Core
-index.get('/', function(request, response) {
-    
-   });
+index.get('/', function (request, response) {
+});
+
 
 /**
  * Server
@@ -21,12 +21,13 @@ module.exports = class Server {
    */
   middleware() {
     this.app.use(express.json())
+    
   }
 
   /**
    * Routes
    */
-  routes()  {
+  routes() {
     new routes.crud.selectAllUser(this.app)
     new routes.crud.selectUser(this.app)
     new routes.crud.updateUser(this.app)
@@ -34,6 +35,7 @@ module.exports = class Server {
     new routes.crud.deletUser(this.app)
     // If route not exist
     this.app.use((req, res) => {
+      res.header("Access-Control-Allow-Origin", "http://localhost:4200");
       res.status(404).json({
         code: 404,
         message: "Not Found"
