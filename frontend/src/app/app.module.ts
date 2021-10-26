@@ -15,7 +15,8 @@ import { FirstPageComponent } from './compo/first-page/first-page.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,FormsModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
