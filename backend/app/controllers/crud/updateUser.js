@@ -10,12 +10,11 @@ module.exports = class updateUser{
     }
 
     async middleware() {
-        this.app.get(`/crud/updateUser`,cors(), async (req, res) => {
+        this.app.get(`/crud/updateUser`, async (req, res) => {
                 console.log(req.query.mdp)
                 const pool = await poolPromise
                 const updateUser = `UPDATE utilisateurs SET mdp = '${req.query.mdp}' WHERE id = ${req.query.id}`
                 const modifyUser = await pool.request().query(updateUser)
-                console.log("Je suis laaaaaaaaaaaaaaaa")
                 res.status(200).json(modifyUser)
             })
         
