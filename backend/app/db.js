@@ -3,13 +3,13 @@ dotenv.config()
 const sql = require('mssql')
 
 const config = { 
-  user: 'test',
-  password: 'Azerty1',
-  server: 'localhost',
+  user: process.env.BDD_USER,
+  password: process.env.BDD_MDP,
+  server: process.env.BDD_SERVER,
   options: {
     port: 1433,
-    database: 'test',
-    instancename: 'SQLEXPRESS',
+    database: process.env.BDD_NAME,
+    instancename: process.env.BDD_HOST,
     encrypt: false
   }
 }
