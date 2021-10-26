@@ -1,23 +1,34 @@
-
 <ul>
     <li *ngFor="let allUser of user,let i = index">
         {{allUser.id}}
         {{allUser.nom}}
         {{allUser.prenom}}
         {{allUser.login}}
-        {{allUser.mdp}} 
+        {{allUser.mdp}}
         <button (click)='deletUser(allUser.id)'>delet</button>
-               
+
     </li>
 </ul>
 
 <form (ngSubmit)="updateUser(idUserUpdate,newPassword)">
-	<div>
-	<select [(ngModel)]="idUserUpdate" [ngModelOptions]="{standalone: true}">
-        <option>Choisire un id</option>
-		<option *ngFor="let allUser of user" > {{allUser.id}}</option>
-	</select><br/>
-    <input type="text" [(ngModel)]="newPassword" [ngModelOptions]="{standalone: true}">
-    <button type="submit">update</button>
+    <div>
+        <select [(ngModel)]="idUserUpdate" [ngModelOptions]="{standalone: true}">
+            <option>Choisire un id</option>
+            <option *ngFor="let allUser of user"> {{allUser.id}}</option>
+        </select><br />
     </div>
+    <div>
+        <input type="text" [(ngModel)]="newPassword" [ngModelOptions]="{standalone: true}">
+    </div>
+    <div>
+        <button type="submit">update</button>
+    </div>
+</form>
+
+<form (ngSubmit)="insertUser(nomUser,prenomUser,loginUser,passwordUser)">
+    <input type="text" [(ngModel)]="nomUser" [ngModelOptions]="{standalone: true}">
+    <input type="text" [(ngModel)]="prenomUser" [ngModelOptions]="{standalone: true}">
+    <input type="text" [(ngModel)]="loginUser" [ngModelOptions]="{standalone: true}">
+    <input type="text" [(ngModel)]="passwordUser" [ngModelOptions]="{standalone: true}">
+    <button type="submit">Ajouter</button>
 </form>
