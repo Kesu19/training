@@ -27,6 +27,7 @@ export class FirstPageComponent implements OnInit {
     })
   }
 
+  
   deletUser(i:any){
     this.firstCrudService.deletUser(i).subscribe(data=>{
       console.log(i)
