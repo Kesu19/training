@@ -13,7 +13,11 @@ import { NgForm } from '@angular/forms';
 export class FirstPageComponent implements OnInit {
   user:any[]=[]
   idUserUpdate:any
+  nomUser: any
+  prenomUser:any
+  loginUser: any
   newPassword:any
+  passwordUser:any
   constructor(private firstCrudService: FirstCrudService) { }
 
   ngOnInit(): void {
@@ -37,7 +41,12 @@ export class FirstPageComponent implements OnInit {
       console.log(id)
     })
   }
-
+  insertUser(nom:any,prenomUser:any,loginUser:any,passwordUser:any){
+    console.log(passwordUser)
+    this.firstCrudService.insertUser(nom,prenomUser,loginUser,passwordUser).subscribe(data=>{
+      console.log(nom)
+    })
+  }
 
  
 
