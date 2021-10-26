@@ -35,14 +35,14 @@ export class FirstCrudService {
     console.log(parametres)
     return this.http.get<any>(endpoint, { params: parametres })
   }
-  insertUser(nom :any,prenom:any,login:any, newPassword: any): Observable<any> {
+  insertUser(nom :any,prenom:any,login:any, mdp: any): Observable<any> {
     let parametres = new HttpParams();
     parametres = parametres.append('nom', nom);
     parametres = parametres.append('prenom', prenom);
-    parametres = parametres.append('nom', login);
-    parametres = parametres.append('mdp', newPassword);
+    parametres = parametres.append('login', login);
+    parametres = parametres.append('mdp', mdp);
     const endpoint = `http://localhost:4000/crud/insertUser`;
     console.log(parametres)
-    return this.http.post<any>(endpoint,{ nom, prenom, login, newPassword},optionRequete)
+    return this.http.post<any>(endpoint,{ nom, prenom, login, mdp},optionRequete)
   }
 }
